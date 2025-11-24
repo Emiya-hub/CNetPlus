@@ -76,7 +76,7 @@ Trunk Ports: switch to switch:
 TAAS/BABA:
 config t
 Int Range fa0/10-12
- shutdown
+ !!shutdown
  no shutdown
  switchport trunk Encap Dot1Q
  switchport mode trunk
@@ -172,10 +172,10 @@ config t
 ip routing
 ip dhcp pool CAMERA6
 host 10.32.50.6 255.255.255.0
-client-identifier abcd.1234.cafb
+client-identifier 001a.0709.c25f
 ip dhcp pool CAMERA8
 host 10.32.50.8 255.255.255.0
-client-identifier abcd.1234.cafb
+client-identifier 001a.0704.7f6
 end
 show ip dhcp binding
 
@@ -246,18 +246,18 @@ ephone-dn 7
 ephone-dn 8
   number 3288
  ephone-dn 9
-   number 3299
+   number 3293
 ephone-dn 10
- number 3298
+ number 3209
 Ephone 1
-  Mac-address cafe.face.baba
+  Mac-address dca5.f43f.3b7f
   type 8945
-  button 1:8 2:7 3:6 4:5
+  button 1:1 2:2 3:3 4:9
   restart
 Ephone 2
-  Mac-address fafa.caca.baba
+  Mac-address 203a.0783.6b15
   type 8945
-  button 1:4 2:3 3:2 4:1
+  button 1:5 2:6 3:7 4:10
   restart  
 end
 
@@ -304,10 +304,10 @@ dial-peer voice 31 Voip
  destination-pattern 31..
  session target ipv4:10.31.100.8
  codec g711ULAW
-dial-peer voice 32 Voip
- destination-pattern 32..
- session target ipv4:10.32.100.8
- codec g711ULAW
+!dial-peer voice 32 Voip
+ !destination-pattern 32..
+ !session target ipv4:10.32.100.8
+ !codec g711ULAW
 dial-peer voice 41 Voip
  destination-pattern 41..
  session target ipv4:10.41.100.8
@@ -603,32 +603,32 @@ conf t
 !
  voice register global
   mode cme
-  source-address 10._.100.8 port 5060
+  source-address 10.32.100.8 port 5060
   max-dn 12
   max-pool 12
   authenticate register
-  create profile sync
+  create profile
  voice register dn 1
-   number ____
+   number 3299
    allow watch
-   name _______
+   name 3299
  voice register dn 2
-   number ___
+   number 3298
    allow watch
-   name _______
+   name 3298
 !
   voice register pool 1
-    id mac ____.____.____
+    id mac 282D.7F91.DAA2
     number 1 dn 1
     dtmf-relay sip-notify
-    username ____ password ____
+    username 3299 password 3299
     codec g711ulaw
 !
   voice register pool 2
-    id mac ____.____.____
+    id mac 76E5.5268.CBA5
     number 1 dn 2
     dtmf-relay sip-notify
-    username ____ password ____
+    username 1198 password 1198
     codec g711ulaw
 !
 *******call other countries!!!********
@@ -643,4 +643,5 @@ exit
           
 sip-ua
 sip-server ipv4:192.168.k.1
+
 
